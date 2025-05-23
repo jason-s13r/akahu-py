@@ -1,0 +1,51 @@
+[project]
+name = "akahu-py"
+version = "0.1.0"
+description = "Akahu api client"
+readme = "README.md"
+authors = [
+    { name = "Jason Schwarzenberger", email = "jason@js.org.nz" }
+]
+license = { text = "MIT" }
+requires-python = ">=3.13"
+dependencies = [
+    "backoff>=2.2.1",
+    "click>=8.2.1",
+    "click-extra>=5.0.0",
+    "pydantic>=2.11.5",
+    "ratelimit>=2.2.1",
+    "requests>=2.32.3",
+    "xdg-base-dirs>=6.0.2",
+]
+
+[project.scripts]
+akahu-py = "akahu.command:cli"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/akahu"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.2.0",
+    "ruff>=0.11.11",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.pytest.ini_options]
+markers = [
+    "serial",  # used to indicate tests must not run in parallel
+]
+
+[tool.coverage.run]
+relative_files = true
+
+[tool.ruff.lint]
+select = ["E", "F"]
+ignore = ["E402", "E501"]
+exclude = ["**/tests/**"]
