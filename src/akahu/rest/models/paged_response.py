@@ -5,6 +5,7 @@ class PagedResponse[T]:
     def __init__(
         self, Ctor: T.__class__, next, success: bool, items: List, cursor: dict = None
     ):
+        self._Ctor = Ctor
         self._success = success
         self._items: List[T] = [Ctor(**item) for item in items] if items else []
         self._cursor = cursor or dict(next=None)
@@ -37,4 +38,4 @@ class PagedResponse[T]:
             return None
 
         response = self._next(cursor=self.cursor, **kwargs)
-        return PagedResponse[T](self._next, **response)
+        return PagedResponse[T](self._Ctor, self._next, **response)
