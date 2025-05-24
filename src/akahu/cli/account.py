@@ -2,12 +2,11 @@ from functools import reduce
 from typing import List
 import click
 from click_extra.tabulate import render_table
-import shelve
 import math
 
 from akahu.client import Client as AkahuClient
 from akahu.models.account import Account, AccountStatus, AccountType
-from akahu.utils import config_file
+from akahu.cli.utils import get_tokens
 
 
 @click.group("account")
@@ -27,13 +26,9 @@ def account():
 def list_accounts(account_type: AccountType, currency: str, show_inactive: bool):
     """List accounts."""
 
-    app_token = None
-    user_token = None
-    with shelve.open(config_file(), writeback=False) as db:
-        app_token = db.get("app_token")
-        user_token = db.get("user_token")
+    app_token, user_token = get_tokens()
 
-    api = AkahuClient(app_token, user_token)
+    api = AkahuClient(AkahuClient.Config(app_token, user_token))
     accounts: List[Account] = api.accounts.list()
 
     def account_row(account: Account) -> List:

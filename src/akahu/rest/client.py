@@ -4,9 +4,9 @@ from akahu.rest.models.api_error import ApiError
 
 
 class RestClient:
-    def __init__(self, base_url: str, headers: dict = None) -> None:
+    def __init__(self, base_url: str, headers: dict = {}) -> None:
         self._base_url = base_url
-        self._headers = headers if headers else {}
+        self._headers = headers
 
     def _request(
         self, method: str, endpoint: str, headers: dict = {}, **kwargs

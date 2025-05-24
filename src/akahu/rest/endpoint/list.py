@@ -3,20 +3,20 @@ from backoff import expo, on_exception
 from ratelimit import RateLimitException, limits
 
 from akahu.rest.base import ApiBase, ApiEndpoint
-from akahu.rest.models.paged_response import PagedResponse
-from akahu.utils import (
-    AKAHU_DEFAULT_RATE_LIMIT,
-    AKAHU_DEFAULT_RATE_LIMIT_PERIOD,
-    AKAHU_DEFAULT_RETRY_LIMIT,
+from akahu.rest.endpoint.defaults import (
+    DEFAULT_RATE_LIMIT,
+    DEFAULT_RATE_LIMIT_PERIOD,
+    DEFAULT_RETRY_LIMIT,
 )
+from akahu.rest.models.paged_response import PagedResponse
 
 
 class ApiListEndpoint[T](ApiEndpoint):
     def __init__(self, client: ApiBase, endpoint: str, Ctor: T.__class__) -> None:
         super().__init__(client, endpoint, Ctor)
 
-    @on_exception(expo, RateLimitException, max_tries=AKAHU_DEFAULT_RETRY_LIMIT)
-    @limits(calls=AKAHU_DEFAULT_RATE_LIMIT, period=AKAHU_DEFAULT_RATE_LIMIT_PERIOD)
+    @on_exception(expo, RateLimitException, max_tries=DEFAULT_RETRY_LIMIT)
+    @limits(calls=DEFAULT_RATE_LIMIT, period=DEFAULT_RATE_LIMIT_PERIOD)
     def list(self, **params) -> List[T]:
         def next(**kwargs):
             return self._rest.get(self.endpoint, params=kwargs)
@@ -30,8 +30,8 @@ class ApiPagedEndpoint[T](ApiEndpoint):
     def __init__(self, client: ApiBase, endpoint: str, Ctor: T.__class__) -> None:
         super().__init__(client, endpoint, Ctor)
 
-    @on_exception(expo, RateLimitException, max_tries=AKAHU_DEFAULT_RETRY_LIMIT)
-    @limits(calls=AKAHU_DEFAULT_RATE_LIMIT, period=AKAHU_DEFAULT_RATE_LIMIT_PERIOD)
+    @on_exception(expo, RateLimitException, max_tries=DEFAULT_RETRY_LIMIT)
+    @limits(calls=DEFAULT_RATE_LIMIT, period=DEFAULT_RATE_LIMIT_PERIOD)
     def list(self, **params) -> PagedResponse[T]:
         def next(**kwargs):
             return self._rest.get(self.endpoint, params=kwargs)

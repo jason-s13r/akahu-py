@@ -2,11 +2,10 @@ from datetime import UTC, datetime, timedelta
 from typing import List
 import click
 from click_extra.tabulate import render_table
-import shelve
 
 from akahu.client import Client as AkahuClient
 from akahu.models.transaction import PendingTransaction, Transaction
-from akahu.utils import config_file
+from akahu.cli.utils import get_tokens
 
 
 @click.group("transactions")
@@ -20,18 +19,14 @@ def transactions():
     "--days", default=7, type=click.IntRange(0, 30, min_open=True, max_open=True)
 )
 def list_transactions(days: int):
-    app_token = None
-    user_token = None
-    with shelve.open(config_file(), writeback=False) as db:
-        app_token = db.get("app_token")
-        user_token = db.get("user_token")
+    app_token, user_token = get_tokens()
 
-    api = AkahuClient(app_token, user_token)
+    api = AkahuClient(AkahuClient.Config(app_token, user_token))
 
     end = datetime.now(UTC)
     start = end - timedelta(days=days)
 
-    cursor = api.transactions.list(start, end)
+    cursor = api.transactions.list(start=start, end=end)
     transactions = cursor.items
 
     def meta(tx: Transaction) -> str:
@@ -72,13 +67,9 @@ def list_transactions(days: int):
 
 @transactions.command("pending")
 def pending_transactions():
-    app_token = None
-    user_token = None
-    with shelve.open(config_file(), writeback=False) as db:
-        app_token = db.get("app_token")
-        user_token = db.get("user_token")
+    app_token, user_token = get_tokens()
 
-    api = AkahuClient(app_token, user_token)
+    api = AkahuClient(AkahuClient.Config(app_token, user_token))
 
     transactions = api.transactions.pending.list()
 

@@ -9,6 +9,13 @@ from datetime import datetime
 
 
 class PaymentsEndpoint(ApiGetByIdEndpoint[Payment], ApiListEndpoint[Payment]):
+    """Endpoints for retrieving information about payments.
+
+    Arguments:
+        client (ApiBase): The API client, or prefix-endpoint in the url path.
+        endpoint (str): (optional) The endpoint for the payments API. Defaults to "/payments".
+    """
+
     def __init__(self, client: ApiBase, endpoint="/payments") -> None:
         super().__init__(client, endpoint, Payment)
 
