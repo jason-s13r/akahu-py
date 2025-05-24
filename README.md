@@ -1,6 +1,6 @@
 # akahu-py
 
-**akahu-py** is an unofficial Python client for the [Akahu API](https://developers.akahu.io/).
+**akahu-py** is an unofficial Python client for the [Akahu API](https://developers.akahu.nz).
 
 ## TODO
 
@@ -66,8 +66,8 @@ list accounts, with filtered by currency:
 ```python
 from akahu.client import Client
 
-config = AkahuClient.Config(app_token, user_token)
-api = AkahuClient(config)
+config = Client.Config(app_token, user_token)
+api = Client(config)
 accounts = api.accounts.list()
 for account in accounts:
     print(account.name, account.balance.current)
