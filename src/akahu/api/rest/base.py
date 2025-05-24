@@ -1,5 +1,5 @@
 from typing import Any
-from akahu.rest.client import RestClient
+from akahu.api.rest.client import RestClient
 
 
 class ApiBase:

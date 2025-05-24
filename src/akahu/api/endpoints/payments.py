@@ -1,8 +1,8 @@
 from typing import List
 from akahu.models.payment import Payment
-from akahu.rest.base import ApiBase
-from akahu.rest.endpoint.getbyid import ApiGetByIdEndpoint
-from akahu.rest.endpoint.list import ApiListEndpoint
+from akahu.api.rest.base import ApiBase
+from akahu.api.rest.endpoint.getbyid import ApiGetByIdEndpoint
+from akahu.api.rest.endpoint.list import ApiListEndpoint
 
 
 from datetime import datetime

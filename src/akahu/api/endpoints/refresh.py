@@ -1,6 +1,6 @@
-from akahu.rest.base import ApiBase
-from akahu.rest.endpoint.get import ApiGetEndpoint
-from akahu.rest.endpoint.getbyid import ApiGetByIdEndpoint
+from akahu.api.rest.base import ApiBase
+from akahu.api.rest.endpoint.get import ApiGetEndpoint
+from akahu.api.rest.endpoint.getbyid import ApiGetByIdEndpoint
 
 
 class RefreshEndpoint(ApiGetEndpoint[bool], ApiGetByIdEndpoint[bool]):

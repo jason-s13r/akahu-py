@@ -10,7 +10,7 @@ from akahu.api.endpoints.pending_transactions import PendingTransactionsEndpoint
 from akahu.api.endpoints.refresh import RefreshEndpoint
 from akahu.api.endpoints.transactions import TransactionsEndpoint
 from akahu.api.endpoints.transfers import TransfersEndpoint
-from akahu.rest.base import ApiBase
+from akahu.api.rest.base import ApiBase
 
 
 class Client(ApiBase):

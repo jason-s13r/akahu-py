@@ -1,8 +1,8 @@
 from akahu.api.endpoints.transactions import TransactionsEndpoint
 from akahu.models.account import Account
-from akahu.rest.base import ApiBase
-from akahu.rest.endpoint.getbyid import ApiGetByIdEndpoint
-from akahu.rest.endpoint.list import ApiListEndpoint
+from akahu.api.rest.base import ApiBase
+from akahu.api.rest.endpoint.getbyid import ApiGetByIdEndpoint
+from akahu.api.rest.endpoint.list import ApiListEndpoint
 
 
 class AccountsEndpoint(ApiGetByIdEndpoint[Account], ApiListEndpoint[Account]):

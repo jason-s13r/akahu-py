@@ -1,6 +1,6 @@
 from akahu.models.transaction import PendingTransaction
-from akahu.rest.base import ApiBase
-from akahu.rest.endpoint.list import ApiListEndpoint
+from akahu.api.rest.base import ApiBase
+from akahu.api.rest.endpoint.list import ApiListEndpoint
 
 
 class PendingTransactionsEndpoint(ApiListEndpoint[PendingTransaction]):

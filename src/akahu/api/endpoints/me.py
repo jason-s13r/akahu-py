@@ -1,6 +1,6 @@
 from akahu.models.user import User
-from akahu.rest.base import ApiBase
-from akahu.rest.endpoint.get import ApiGetEndpoint
+from akahu.api.rest.base import ApiBase
+from akahu.api.rest.endpoint.get import ApiGetEndpoint
 
 
 class MeEndpoint(ApiGetEndpoint[User]):

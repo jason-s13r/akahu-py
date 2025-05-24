@@ -2,14 +2,14 @@ from functools import cached_property
 
 from akahu.api.endpoints.pending_transactions import PendingTransactionsEndpoint
 from akahu.models.transaction import Transaction
-from akahu.rest.base import ApiBase
-from akahu.rest.endpoint.getbyid import ApiGetByIdEndpoint
-from akahu.rest.endpoint.list import ApiPagedEndpoint
+from akahu.api.rest.base import ApiBase
+from akahu.api.rest.endpoint.getbyid import ApiGetByIdEndpoint
+from akahu.api.rest.endpoint.list import ApiPagedEndpoint
 
 
 from datetime import datetime
 
-from akahu.rest.models.paged_response import PagedResponse
+from akahu.api.rest.models.paged_response import PagedResponse
 
 
 class TransactionsEndpoint(

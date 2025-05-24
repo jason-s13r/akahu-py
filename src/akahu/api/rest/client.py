@@ -1,6 +1,6 @@
 from requests import HTTPError, request
 
-from akahu.rest.models.api_error import ApiError
+from akahu.api.rest.models.api_error import ApiError
 
 
 class RestClient:

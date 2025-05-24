@@ -2,13 +2,13 @@ from typing import List
 from backoff import expo, on_exception
 from ratelimit import RateLimitException, limits
 
-from akahu.rest.base import ApiBase, ApiEndpoint
-from akahu.rest.endpoint.defaults import (
+from akahu.api.rest.base import ApiBase, ApiEndpoint
+from akahu.api.rest.endpoint.defaults import (
     DEFAULT_RATE_LIMIT,
     DEFAULT_RATE_LIMIT_PERIOD,
     DEFAULT_RETRY_LIMIT,
 )
-from akahu.rest.models.paged_response import PagedResponse
+from akahu.api.rest.models.paged_response import PagedResponse
 
 
 class ApiListEndpoint[T](ApiEndpoint):
