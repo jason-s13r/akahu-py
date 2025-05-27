@@ -16,26 +16,24 @@ dependencies = [
     "ratelimit>=2.2.1",
     "requests>=2.32.3",
     "xdg-base-dirs>=6.0.2",
+    "sphinx>=8.2.3"
 ]
-
-[project.scripts]
-akahu-py = "akahu.command:cli"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/akahu"]
-
-[build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.11.11",
 ]
-docs = [
-    "sphinx>=8.2.3",
-]
+
+[project.scripts]
+akahu-py = "akahu.command:cli"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/akahu"]
 
 [tool.hatch.metadata]
 allow-direct-references = true
@@ -44,3 +42,6 @@ allow-direct-references = true
 select = ["E", "F"]
 ignore = ["E402", "E501"]
 exclude = ["**/tests/**"]
+
+[tool.uv.sources]
+akahu-py = { workspace = true }

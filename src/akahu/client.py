@@ -18,12 +18,12 @@ class Client(ApiBase):
 
     Arguments:
         config (Client.Config): (optional) Configuration for the Akahu API client.
-        **kwargs (Client.Config): Additional configuration parameters.
     """
 
     @dataclass(config=ConfigDict(extra="ignore"))
     class Config:
-        """Configuration for the Akahu API client.
+        """
+        Configuration for the Akahu API client.
 
         Attributes:
             app_token (str): The application token.

@@ -10,12 +10,13 @@ from akahu.api.rest.endpoint.defaults import (
 )
 
 
-class ApiGetByIdEndpoint[T](ApiEndpoint):
-    @dataclass
-    class GetByIdResponse[D]:
-        success: bool
-        item: D = None
+@dataclass
+class GetByIdResponse[D]:
+    success: bool
+    item: D = None
 
+
+class ApiGetByIdEndpoint[T](ApiEndpoint):
     def __init__(self, client: ApiBase, endpoint: str, Ctor: T.__class__) -> None:
         super().__init__(client, endpoint, Ctor)
 
@@ -23,7 +24,7 @@ class ApiGetByIdEndpoint[T](ApiEndpoint):
     @limits(calls=DEFAULT_RATE_LIMIT, period=DEFAULT_RATE_LIMIT_PERIOD)
     def getById(self, id: str, **kwargs) -> T:
         raw = self._rest.get(f"{self.endpoint}/{id}", **kwargs)
-        data = self.GetByIdResponse[T](**raw)
+        data = GetByIdResponse[T](**raw)
 
         if not data.item:
             return None

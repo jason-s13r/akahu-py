@@ -13,6 +13,7 @@ dependencies = [
     { name = "pydantic" },
     { name = "ratelimit" },
     { name = "requests" },
+    { name = "sphinx" },
     { name = "xdg-base-dirs" },
 ]
 
@@ -20,9 +21,6 @@ dependencies = [
 dev = [
     { name = "pre-commit" },
     { name = "ruff" },
-]
-docs = [
-    { name = "sphinx" },
 ]
 
 [package.metadata]
@@ -33,6 +31,7 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.11.5" },
     { name = "ratelimit", specifier = ">=2.2.1" },
     { name = "requests", specifier = ">=2.32.3" },
+    { name = "sphinx", specifier = ">=8.2.3" },
     { name = "xdg-base-dirs", specifier = ">=6.0.2" },
 ]
 
@@ -41,7 +40,6 @@ dev = [
     { name = "pre-commit", specifier = ">=4.2.0" },
     { name = "ruff", specifier = ">=0.11.11" },
 ]
-docs = [{ name = "sphinx", specifier = ">=8.2.3" }]
 
 [[package]]
 name = "alabaster"

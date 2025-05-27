@@ -3,6 +3,16 @@
 # For the full list of built-in configuration values, see the documentation:
 # https://www.sphinx-doc.org/en/master/usage/configuration.html
 
+import sys
+from pathlib import Path
+
+# sys.path.insert(0, str(Path(__file__).parent.resolve().parents[2]))
+
+
+repo = Path(__file__).parent.parent.parent.resolve()  # ./ relative to repo root
+root = (repo / "src").resolve()  # ./src relative to repo root
+sys.path.insert(0, str(root))
+
 # -- Project information -----------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
@@ -13,7 +23,10 @@ author = "Jason"
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = []
+extensions = [
+    "sphinx.ext.duration",
+    "sphinx.ext.autodoc",
+]
 
 templates_path = ["_templates"]
 exclude_patterns = []

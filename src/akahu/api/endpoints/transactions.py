@@ -31,11 +31,11 @@ class TransactionsEndpoint(
         self, start: datetime, end: datetime, cursor: str = None, **kwargs
     ) -> PagedResponse[Transaction]:
         """List transactions.
+
         Arguments:
             start (datetime): Start date for the transactions.
             end (datetime): End date for the transactions.
             cursor (str): Cursor for pagination.
-            **kwargs: Additional parameters to pass to the API.
         """
         return super().list(**kwargs)
 
