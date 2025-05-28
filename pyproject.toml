@@ -16,13 +16,17 @@ dependencies = [
     "ratelimit>=2.2.1",
     "requests>=2.32.3",
     "xdg-base-dirs>=6.0.2",
-    "sphinx>=8.2.3"
 ]
 
 [dependency-groups]
 dev = [
     "pre-commit>=4.2.0",
     "ruff>=0.11.11",
+]
+docs = [
+    "sphinx>=8.2.3",
+    "sphinx-click>=6.0.0",
+    "sphinxcontrib-autoprogram>=0.1.9",
 ]
 
 [project.scripts]

@@ -7,8 +7,7 @@ from akahu.cli.transactions import transactions
 
 
 @click.group()
-@click.pass_context
-def cli(ctx):
+def cli():
     """Akahu CLI."""
     pass
 

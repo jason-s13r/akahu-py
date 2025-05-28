@@ -33,4 +33,5 @@ class AccountsEndpoint(ApiGetByIdEndpoint[Account], ApiListEndpoint[Account]):
             >>> cursor.items
             [Transaction(...), Transaction(...)]
         """
+        print(f"TransactionsEndpoint: {id}")
         return TransactionsEndpoint(self, f"/{id}/transactions")
