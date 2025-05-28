@@ -17,7 +17,7 @@ sys.path.insert(0, str(root))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "akahu-py"
-copyright = "2025, Jason"
+copyright = ""
 author = "Jason"
 
 # -- General configuration ---------------------------------------------------

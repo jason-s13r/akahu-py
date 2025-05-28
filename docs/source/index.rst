@@ -9,6 +9,9 @@ akahu-py documentation
 **akahu-py** is an unofficial Python client for the `Akahu API <https://developers.akahu.nz>`_.
 
 
+Github: `jason-s13r/akahu-py <https://github.com/jason-s13r/akahu-py>`_.
+
+
 Command
 --------
 
