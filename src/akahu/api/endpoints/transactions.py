@@ -41,16 +41,5 @@ class TransactionsEndpoint(
 
     @cached_property
     def pending(self) -> PendingTransactionsEndpoint:
-        """Endpoint for retrieving pending transactions. Might be scoped to a specific account.
-
-        Example:
-        ```
-        from akahu.client import Client
-        client = Client(AkahuApiConfig("app_token", "user_token"))
-        pending_transactions = client.transactions.pending.list()
-        # [PendingTransaction(..., account="1"), PendingTransaction(..., account="2")]
-        pending_account_transactions = client.accounts.transactions("1").pending.list()
-        # [PendingTransaction(..., account="1")]
-        ```
-        """
+        """Endpoint for retrieving pending transactions. Might be scoped to a specific account."""
         return PendingTransactionsEndpoint(self, "/pending")

@@ -6,10 +6,7 @@
 import sys
 from pathlib import Path
 
-# sys.path.insert(0, str(Path(__file__).parent.resolve().parents[2]))
-
-
-repo = Path(__file__).parent.parent.parent.resolve()  # ./ relative to repo root
+repo = Path(__file__).parent.parent.resolve()  # ./ relative to repo root
 root = (repo / "src").resolve()  # ./src relative to repo root
 sys.path.insert(0, str(root))
 
@@ -17,7 +14,7 @@ sys.path.insert(0, str(root))
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = "akahu-py"
-copyright = ""
+copyright = "2025 Jason"
 author = "Jason"
 
 # -- General configuration ---------------------------------------------------
@@ -34,3 +31,4 @@ exclude_patterns = []
 
 html_theme = "alabaster"
 html_static_path = ["_static"]
+html_show_sphinx = False

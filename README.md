@@ -6,7 +6,6 @@
 
 - a lot, probably.
 - [ ] tests
-- [ ] docs
 - [ ] support more endpoints
 - [ ] eg, make payments and transfers
 - [ ] support full app tokens
@@ -75,7 +74,7 @@ for account in accounts:
 
 ## Documentation
 
-TODO. There's a few some docstrings in the code.
+https://akahu-py.readthedocs.io/
 
 ## Contributing
 

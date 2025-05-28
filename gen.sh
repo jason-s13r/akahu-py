@@ -8,7 +8,7 @@ for file in $files; do
 	# Get the module name (last part of the path)
 	name="${mod}"
 	underline="$(echo "$name" | tr "$name" "=")"
-	output=$(echo "$file" | sed 's|src/|docs/source/|; s|\.py$|.rst|')
+	output=$(echo "$file" | sed 's|src/|readthedocs/|; s|\.py$|.rst|')
 	echo "Processing: $file as module $mod;"
 
 	if [ -f "$output" ]; then

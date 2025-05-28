@@ -25,13 +25,6 @@ class AccountsEndpoint(ApiGetByIdEndpoint[Account], ApiListEndpoint[Account]):
         Returns:
             TransactionsEndpoint: A transactions endpoint scoped to the account.
             Route: /accounts/{id}/transactions.
-
-        Example:
-            >>> from akahu.client import Client
-            >>> client = Client(AkahuApiConfig("app_token", "user_token"))
-            >>> cursor = client.accounts.transactions("account_id").list()
-            >>> cursor.items
-            [Transaction(...), Transaction(...)]
         """
         print(f"TransactionsEndpoint: {id}")
         return TransactionsEndpoint(self, f"/{id}/transactions")
