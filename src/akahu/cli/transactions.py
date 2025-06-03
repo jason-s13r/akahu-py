@@ -4,7 +4,7 @@ import click
 from click_extra.tabulate import render_table
 
 from akahu.client import Client as AkahuClient
-from akahu.models.transaction import PendingTransaction, Transaction
+from akahu.models.transaction import PendingTransaction, Transaction, TransactionType
 from akahu.cli.utils import get_tokens
 
 
@@ -18,7 +18,12 @@ def transactions():
 @click.option(
     "--days", default=7, type=click.IntRange(0, 30, min_open=True, max_open=True)
 )
-def list_transactions(days: int):
+@click.option(
+    "--transaction-type",
+    type=click.Choice(TransactionType),
+    help="Transaction types to filter by.",
+)
+def list_transactions(days: int, transaction_type: TransactionType | None):
     app_token, user_token = get_tokens()
 
     api = AkahuClient(AkahuClient.Config(app_token, user_token))
@@ -54,6 +59,10 @@ def list_transactions(days: int):
     ]
 
     items = transactions
+
+    if transaction_type:
+        items = filter(lambda x: x.type == transaction_type, items)
+
     rows = [tx_row(item) for item in items]
     total = sum([item.amount for item in items], 0)
     totals = [["", "Total", total, "", "", "", ""]]
