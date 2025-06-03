@@ -7,7 +7,7 @@ DEFAULT_ERROR_MESSAGE = {429: "Rate limit exceeded. Please try again later."}
 
 class ApiError(HTTPError):
     def __init__(self, error: HTTPError) -> None:
-        super(error)
+        super().__init__(error)
         self._data = None
 
     @property
